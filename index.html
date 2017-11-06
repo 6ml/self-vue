@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>self-vue</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Name: <span>{{name}}</span></h1>
+            <h2>Age: <span>{{age}}</span></h2>
+            <input type="text" name="name" id="name" placeholder="请输入您的名字">
+        </div>
+        <script type="text/javascript" src="./js/observer.js"></script>
+        <script type="text/javascript" src="./js/watcher.js"></script>
+        <script type="text/javascript" src="./js/compile.js"></script>
+        <script type="text/javascript" src="./js/index.js"></script>
+        <script type="text/javascript">
+            var selfVue = new SelfVue({
+                el: '#app',
+                data: {
+                    name: 'hello',
+                    age: 22
+                }
+            });
+
+            window.setTimeout(function() {
+                selfVue.name = 'lupath';
+            }, 1000);
+
+            window.setTimeout(function() {
+                selfVue.age = 20;
+            }, 2000);
+
+            document.getElementById('name').addEventListener('keyup', function(event) {
+                selfVue.name = this.value;
+            }, false);
+        </script>
+    </body>
+</html>
